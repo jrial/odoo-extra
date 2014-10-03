@@ -161,7 +161,7 @@ def safe_eval_debug(expr, globals_dict=None, locals_dict=None, mode="eval", noco
             # Must be here because conditional import at top doesn't work since
             # the config module is loaded, but not initialised there yet.
             import pdb
-            with tempfile.NamedTemporaryFile(dir='/tmp', suffix='.py') as debug_fd:
+            with tempfile.NamedTemporaryFile(suffix='.py') as debug_fd:
                 c = test_expr_debug(expr, _SAFE_OPCODES, mode=mode, debug_fd=debug_fd)
                 return pdb.runeval(c, globals=globals_dict, locals=locals_dict)
         else:
